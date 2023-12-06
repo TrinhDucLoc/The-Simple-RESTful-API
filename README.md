@@ -1,4 +1,4 @@
-﻿---
+---
 author: Trinh Duc Loc
 Title: The Simple RESTful API
 ---
