@@ -61,7 +61,7 @@ Click application-local.properties
 
 ### Running the Application
 
-- Run the application at main function of SpringbootSimpleApplication
+- Run the application by executing the `main` function of `SpringbootSimpleApplication`.
 - The application will start at http://localhost:8080.
 - Link Swagger API Document: http://localhost:8080/swagger-ui/
 
