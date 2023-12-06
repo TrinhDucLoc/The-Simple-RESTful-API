@@ -67,7 +67,8 @@ Before running the project, make sure you have the following installed:
 
 
 ### API Endpoints
-![Swagger API Document]([.image/SimpleAPI_001.png](https://github.com/TrinhDucLoc/The-Simple-RESTful-API/blob/main/image/SimpleAPI_001.png))
-![Auth Controller]([.image/SimpleAPI_002.png](https://github.com/TrinhDucLoc/The-Simple-RESTful-API/blob/main/image/SimpleAPI_002.png)https://github.com/TrinhDucLoc/The-Simple-RESTful-API/blob/main/image/SimpleAPI_002.png)
-![Task Controller]([.image/SimpleAPI_003.png](https://github.com/TrinhDucLoc/The-Simple-RESTful-API/blob/main/image/SimpleAPI_003.png)https://github.com/TrinhDucLoc/The-Simple-RESTful-API/blob/main/image/SimpleAPI_003.png)
+![Swagger API Document](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_001.png)
+![Auth Controller](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_002.png)
+![Task Controller](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_003.png)
+
 ...
