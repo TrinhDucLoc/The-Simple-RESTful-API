@@ -44,7 +44,7 @@ Before running the project, make sure you have the following installed:
 
     ```bash
     git clone https://github.com/TrinhDucLoc/The-Simple-RESTful-API
-    cd your-repository
+    cd The-Simple-RESTful-API
     ```
 
 2. Build and install:
@@ -54,7 +54,7 @@ Before running the project, make sure you have the following installed:
     ```
 
 ### Connect Database with MySQL
-- Click application-local.properties
+Click application-local.properties
 - spring.datasource.url = jdbc:mysql://localhost:3306/db_simple_api
 - spring.datasource.username = ${YOUR_USERNAME:}
 - spring.datasource.password = ${YOUR_PASSWORD:}
