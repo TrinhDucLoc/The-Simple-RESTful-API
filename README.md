@@ -67,8 +67,11 @@ Before running the project, make sure you have the following installed:
 
 
 ### API Endpoints
+- Swagger API Document
 ![Swagger API Document](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_001.png)
+- Auth Controller
 ![Auth Controller](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_002.png)
+- Task Controller
 ![Task Controller](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_003.png)
 
 ...
