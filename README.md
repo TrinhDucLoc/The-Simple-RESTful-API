@@ -1,5 +1,5 @@
 ---
-author: Trinh Duc Loc
+Author: Trinh Duc Loc
 Title: The Simple RESTful API
 ---
 
