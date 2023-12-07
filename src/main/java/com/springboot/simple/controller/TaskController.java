@@ -3,6 +3,7 @@ package com.springboot.simple.controller;
 import com.springboot.simple.dto.TaskRequestDTO;
 import com.springboot.simple.dto.TaskResponseDTO;
 import com.springboot.simple.entity.User;
+import com.springboot.simple.exception.TaskAPIException;
 import com.springboot.simple.repository.UserRepository;
 import com.springboot.simple.service.TaskService;
 import io.swagger.annotations.ApiOperation;
@@ -12,8 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,8 +31,14 @@ public class TaskController {
     @PreAuthorize("hasRole('MANAGER')")
     @ApiOperation("Create a new task")
     @PostMapping
-    public ResponseEntity<TaskResponseDTO> createTask(@RequestBody TaskRequestDTO taskRequestDTO) {
+    public ResponseEntity<TaskResponseDTO> createTask(@Valid @RequestBody TaskRequestDTO taskRequestDTO,
+                                                      BindingResult bindingResult) {
         try {
+            if (bindingResult.hasErrors()) {
+                String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
+                throw new TaskAPIException(HttpStatus.BAD_REQUEST, "Validation failed: " + errorMessage);
+            }
+
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             String username = userDetails.getUsername();
             User user = userRepository.findByUsername(username);
@@ -44,8 +53,13 @@ public class TaskController {
     @PreAuthorize("hasRole('MANAGER')")
     @ApiOperation("Update a task by ID")
     @PutMapping("/{id}")
-    public ResponseEntity<TaskResponseDTO> updateTask(@PathVariable Long id, @RequestBody TaskRequestDTO taskRequestDTO) {
+    public ResponseEntity<TaskResponseDTO> updateTask(@PathVariable Long id, @Valid @RequestBody TaskRequestDTO taskRequestDTO,
+                                                      BindingResult bindingResult) {
         try {
+            if (bindingResult.hasErrors()) {
+                String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
+                throw new TaskAPIException(HttpStatus.BAD_REQUEST, "Validation failed: " + errorMessage);
+            }
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             String username = userDetails.getUsername();
             User user = userRepository.findByUsername(username);
