@@ -21,11 +21,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Collections;
 
 @Api(value = "Auth controller exposes login and register REST APIs")
@@ -52,9 +54,15 @@ public class AuthController {
 
     @ApiOperation(value = "REST API to login user")
     @PostMapping("/login")
-    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody @Valid LoginRequest loginRequest,
+                                                            BindingResult bindingResult) {
 
         try {
+            if (bindingResult.hasErrors()) {
+                String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
+                throw new TaskAPIException(HttpStatus.BAD_REQUEST, "Validation failed: " + errorMessage);
+            }
+
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     loginRequest.getEmail(), loginRequest.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -70,16 +78,34 @@ public class AuthController {
 
     @ApiOperation(value = "REST API to Register user with role manager")
     @PostMapping("/register/manager")
-    public ResponseEntity<String> registerAdmin(@RequestBody RegisterRequest registerRequest) {
-        String role = "ROLE_MANAGER";
-        return registerUserWithRole(registerRequest, role);
+    public ResponseEntity<String> registerAdmin(@RequestBody @Valid RegisterRequest registerRequest,
+                                                BindingResult bindingResult) {
+        try {
+            if (bindingResult.hasErrors()) {
+                String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
+                throw new TaskAPIException(HttpStatus.BAD_REQUEST, "Validation failed: " + errorMessage);
+            }
+            String role = "ROLE_MANAGER";
+            return registerUserWithRole(registerRequest, role);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @ApiOperation(value = "REST API to Register user with role member")
     @PostMapping("/register/member")
-    public ResponseEntity<String> registerUser(@RequestBody RegisterRequest registerRequest) {
-        String role = "ROLE_MEMBER";
-        return registerUserWithRole(registerRequest, role);
+    public ResponseEntity<String> registerUser(@RequestBody @Valid RegisterRequest registerRequest,
+                                               BindingResult bindingResult) {
+        try {
+            if (bindingResult.hasErrors()) {
+                String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
+                throw new TaskAPIException(HttpStatus.BAD_REQUEST, "Validation failed: " + errorMessage);
+            }
+            String role = "ROLE_MEMBER";
+            return registerUserWithRole(registerRequest, role);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     private ResponseEntity<String> registerUserWithRole(RegisterRequest registerRequest, String role) {
