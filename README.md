@@ -10,6 +10,7 @@ This repository contains a simple RESTful API built with [Spring Boot](https://s
 ## Table of Contents
 - [Features](#features)
 - [Getting Started](#getting-started)
+- [Validate](#Validate)
 - [API Endpoints](#api-endpoints)
 
 
@@ -68,6 +69,39 @@ Click application-local.properties
 ### Add 2 role: ROLE_MANAGER and ROLE_MEMBER into roles table
 - Way 1: Run RoleServiceTest to create 2 role
 - Way 2: Add role into database
+
+
+## Validate
+### Validation for TaskRequestDTO
+
+The `TaskRequestDTO` object is used for creating or updating tasks. It follows the following validation rules:
+
+- **Title:**
+   - Cannot be blank or null.
+   - Maximum length is 255 characters.
+
+- **Description:**
+   - Cannot be blank or null.
+   - Maximum length is 1000 characters.
+
+- **Completed:**
+   - Cannot be null.
+
+Use this object when creating or updating tasks through the API.
+
+### Validation for RegisterRequest
+
+The `RegisterRequest` object is used for registering a new user. It adheres to the following validation guidelines:
+
+- **Username:**
+   - Cannot be blank or null.
+
+- **Email:**
+   - Cannot be blank or null.
+   - Must follow a valid email format.
+
+- **Password:**
+   - Cannot be blank or null.
 
 ## API Endpoints
 - Swagger API Document
