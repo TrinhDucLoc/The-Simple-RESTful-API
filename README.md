@@ -119,4 +119,3 @@ The `RegisterRequest` object is used for registering a new user. It adheres to t
 Authorize API Task Controller:
 - ROLE_MANAGER: Full access rights
 - ROLE_MEMBER: No access rights to Create, UPDATE, DELETE
-...
