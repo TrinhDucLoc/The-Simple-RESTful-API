@@ -116,4 +116,7 @@ The `RegisterRequest` object is used for registering a new user. It adheres to t
 
 ![Task Controller](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_003.png)
 
+Authorize API Task Controller:
+- ROLE_MANAGER: Full access rights
+- ROLE_MEMBER: No access rights to Create, UPDATE, DELETE
 ...
