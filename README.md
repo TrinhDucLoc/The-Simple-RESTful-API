@@ -65,8 +65,11 @@ Click application-local.properties
 - The application will start at http://localhost:8080.
 - Link Swagger API Document: http://localhost:8080/swagger-ui/
 
+### Add 2 role: ROLE_MANAGER and ROLE_MEMBER into roles table
+- Way 1: Run RoleServiceTest to create 2 role
+- Way 2: Add role into database
 
-### API Endpoints
+## API Endpoints
 - Swagger API Document
   
 ![Swagger API Document](https://raw.githubusercontent.com/TrinhDucLoc/The-Simple-RESTful-API/main/image/SimpleAPI_001.png)
